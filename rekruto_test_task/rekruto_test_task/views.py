@@ -7,5 +7,5 @@ def home(request):
     if name is None or message is None:
         return redirect('/?name=Rekruto&message=Давай дружить!')
     else:
-        output = "<h2>Hello {0}! {1}!</h2>".format(name, message)
+        output = "<h2>Hello {0}! {1}</h2>".format(name, message)
         return HttpResponse(output)

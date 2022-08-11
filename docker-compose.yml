@@ -2,7 +2,12 @@ version: '3'
 services:
    web:
        build: .
-       container_name: docker_rekruto
-       command: python manage.py runserver 0.0.0.0:8080
+       command: gunicorn rekruto_test_task.wsgi --bind 0.0.0.0:8000
        ports:
-           - "127.0.0.1:8080:8080"
+           - "8000:8000"
+   nginx:
+     build: ./nginx
+     ports:
+       - "80:80"
+     depends_on:
+       - web
